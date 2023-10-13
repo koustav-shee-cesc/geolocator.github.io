@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geolocations</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {
+      "packages": ["map"],
+      // Note: you will need to get a mapsApiKey for your project.
+      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+      "mapsApiKey": "AIzaSyDVYdn0yYVA965_bi0crJx_Z47TEkFT76k"
+    });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Lat', 'Long', 'Name'],
+        [22.4815370016318, 88.387946904945, 'SD:BAGHAJATIN STN ROAD (C) P/T'],
+        [22.5376450974602, 88.3918920696571, 'CCD:EAST TOPSIA RD ( E ) O/T NO-2'],
+        [22.5452954536462, 88.4209628581792, 'CCD:MAKALTALA P/T'],
+        [22.4939430234287, 88.3929484637537, 'SD:JADAVPUR STADIUM O/T-2'],
+        [22.4837095952948, 88.3831030882921, 'SD:BAGHAJATIN COL.(N) P/T'],
+        [22.5565415583521, 88.3697016697288, 'CCD:DR SURESH SARKAR RD. O/T'],
+        [22.5526891693645, 88.3759727107438, 'CCD:BECHU LAL RD O/T'],
+        [22.54145, 88.41503, 'CCD:DHAPA DURGANAGAR P/T'],
+        [22.5740820638838, 88.3532425604871, 'CCD:INDIA EXCHANGE PLACE (E) P/T'],
+        [22.53839, 88.38389, 'CCD:TOPSIA RD (S) O/T NO.2'],
+        [22.52389, 88.39471, 'CSD:DEB BANERJEE RD (E) O/T'],
+        [22.5314560964175, 88.390560557215, 'CSD:C.N.ROY RD (E) P/T'],
+        [22.534166922831, 88.3988629950819, 'CSD:CHOUBHAGA (E) O/T NO-1A'],
+        [22.4991628886552,88.3774231176349, 'SD:GARFA (N) O/T'],
+        [22.4905069501042, 88.3848293394095, 'SD:MODERN PARK O/T'],
+        [22.4878517028776,88.4025129646931, 'SD:AJOYNAGAR ( N ) O/T'],
+        [22.5454549837058, 88.3854535508987, 'CCD:CHRISTOPHER RD.(C) O/T-2'],
+        [22.5344168515005, 88.4339193571513, 'CCD:KHAN BERIA O/T'],
+        [22.5511904965016, 88.35606006267, 'CCD:PARK LN. O/T NO.2'],
+        [22.5703602987371, 88.3582856178903, 'CCD:KENDERDINE LN P/T'],
+        [22.5477352719028, 88.3791799755308, 'CCD:GOBRA GOROSTHAN RD P/T'],
+        [22.5392078704117, 88.3820071061863, 'CCD:TOPSIA RD SOUTH ( C ) P/T'],
+        [22.5499756289374, 88.3805885138002, 'CCD:CHRISTOPHER ROAD (N) O/T NO.5'],
+        [22.5480416072428, 88.3796849634519, 'CCD:MAHENDRA CHATTERJEE LANE (N) O/T'],
+        [22.5388042529991, 88.3747336115453, 'CCD:TILJALA RD O/T NO.2'],
+        [22.5200328693516, 88.3820561150239, 'CSD:NEW BALLYGUNGE (S) P/T'],
+        [22.532804156863, 88.3790625918661, 'CSD:KUSTHIA RD. P/T'],
+        [22.5154941850862, 88.3982367219379, 'CSD:INCOME TAX STAFF QTS. O/T NO-1'],
+        [22.5166576569502, 88.3821833176339, 'CSD:JOHURA BAZAR LN (C) O/T'],
+        [22.5135738915824, 88.384464135795, 'CSD:RAJDANGA (C) P/T'],
+        [22.5337192299852, 88.3879380776168, 'CSD:TOPSIA (E) T/H NO.1'],
+        [22.5343051159666, 88.3840661435975, 'CSD:TOPSIA RD. T/H NO.1'],
+        [22.4983059940067, 88.3963264092403, 'SD:KALIKAPUR (E) O/T'],
+        [22.4827576858023, 88.3898030195679, 'SD:RAJAPUR O/T'],
+        [22.4775567858635, 88.3752884922387, 'SD:GANGULY BAGAN HOUSING O/T NO.3'],
+        [22.4788335759893, 88.4074252415743, 'SD:DHALUA (E) O/T'],
+        [22.4763470625198, 88.400044480891, 'SD:UPHAR T/H NO.1A'],
+
+        ]);
+
+        var options = {
+        mapType: 'styledMap',
+        zoomLevel: 7,
+        showTooltip: true,
+        showInfoWindow: true,
+        useMapTypeControl: true,
+        // User will only be able to view/select custom styled maps.
+        mapTypeIds: ['styledMap', 'redEverything', 'imBlue'],
+        maps: {
+          styledMap: {
+            name: 'Styled Map',
+            styles: [
+              {featureType: 'poi.attraction',
+               stylers: [{color: '#fce8b2'}]},
+              {featureType: 'road.highway',
+               stylers: [{hue: '#0277bd'}, {saturation: -50}]},
+              {featureType: 'road.highway', elementType: 'labels.icon',
+               stylers: [{hue: '#000'}, {saturation: 100}, {lightness: 50}]},
+              {featureType: 'landscape',
+               stylers: [{hue: '#259b24'}, {saturation: 10},{lightness: -22}]}
+          ]},
+          redEverything: {
+            name: 'Redden All The Things',
+            styles: [
+              {featureType: 'landscape',
+               stylers: [{color: '#fde0dd'}]},
+              {featureType: 'road.highway',
+               stylers: [{color: '#67000d'}]},
+              {featureType: 'road.highway', elementType: 'labels',
+               stylers: [{visibility: 'off'}]},
+              {featureType: 'poi',
+               stylers: [{hue: '#ff0000'}, {saturation: 50}, {lightness: 0}]},
+              {featureType: 'water',
+               stylers: [{color: '#67000d'}]},
+              {featureType: 'transit.station.airport',
+               stylers: [{color: '#ff0000'}, {saturation: 50}, {lightness: -50}]}
+          ]},
+          imBlue: {
+            name: 'All Your Blues are Belong to Us',
+            styles: [
+              {featureType: 'landscape',
+               stylers: [{color: '#c5cae9'}]},
+              {featureType: 'road.highway',
+               stylers: [{color: '#023858'}]},
+              {featureType: 'road.highway', elementType: 'labels',
+               stylers: [{visibility: 'off'}]},
+              {featureType: 'poi',
+               stylers: [{hue: '#0000ff'}, {saturation: 50}, {lightness: 0}]},
+              {featureType: 'water',
+               stylers: [{color: '#0288d1'}]},
+              {featureType: 'transit.station.airport',
+               stylers: [{color: '#0000ff'}, {saturation: 50}, {lightness: -50}]}
+          ]}
+        }
+      };
+        
+      var map = new google.visualization.Map(document.getElementById('map_div'));
+      map.draw(data, options);
+
+    }
+
+  </script>
+</head>
+
+<body>
+  <div id="map_div" style="width: 90vw; height: 90vh"></div>
+</body>
+
+</html>
