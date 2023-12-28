@@ -1,144 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geolocations</title>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load("current", {
-      "packages": ["map"],
-      // Note: you will need to get a mapsApiKey for your project.
-      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-      "mapsApiKey": "AIzaSyDVYdn0yYVA965_bi0crJx_Z47TEkFT76k"
-    });
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Lat', 'Long', 'Name'],
-        [22.4815370016318, 88.387946904945, 'SD:BAGHAJATIN STN ROAD (C) P/T'],
-        [22.5376450974602, 88.3918920696571, 'CCD:EAST TOPSIA RD ( E ) O/T NO-2'],
-        [22.5452954536462, 88.4209628581792, 'CCD:MAKALTALA P/T'],
-        [22.4939430234287, 88.3929484637537, 'SD:JADAVPUR STADIUM O/T-2'],
-        [22.4837095952948, 88.3831030882921, 'SD:BAGHAJATIN COL.(N) P/T'],
-        [22.5565415583521, 88.3697016697288, 'CCD:DR SURESH SARKAR RD. O/T'],
-        [22.5526891693645, 88.3759727107438, 'CCD:BECHU LAL RD O/T'],
-        [22.54145, 88.41503, 'CCD:DHAPA DURGANAGAR P/T'],
-        [22.5740820638838, 88.3532425604871, 'CCD:INDIA EXCHANGE PLACE (E) P/T'],
-        [22.53839, 88.38389, 'CCD:TOPSIA RD (S) O/T NO.2'],
-        [22.52389, 88.39471, 'CSD:DEB BANERJEE RD (E) O/T'],
-        [22.5314560964175, 88.390560557215, 'CSD:C.N.ROY RD (E) P/T'],
-        [22.534166922831, 88.3988629950819, 'CSD:CHOUBHAGA (E) O/T NO-1A'],
-        [22.4991628886552,88.3774231176349, 'SD:GARFA (N) O/T'],
-        [22.4905069501042, 88.3848293394095, 'SD:MODERN PARK O/T'],
-        [22.4878517028776,88.4025129646931, 'SD:AJOYNAGAR ( N ) O/T'],
-        [22.5454549837058, 88.3854535508987, 'CCD:CHRISTOPHER RD.(C) O/T-2'],
-        [22.5344168515005, 88.4339193571513, 'CCD:KHAN BERIA O/T'],
-        [22.5511904965016, 88.35606006267, 'CCD:PARK LN. O/T NO.2'],
-        [22.5703602987371, 88.3582856178903, 'CCD:KENDERDINE LN P/T'],
-        [22.5477352719028, 88.3791799755308, 'CCD:GOBRA GOROSTHAN RD P/T'],
-        [22.5392078704117, 88.3820071061863, 'CCD:TOPSIA RD SOUTH ( C ) P/T'],
-        [22.5499756289374, 88.3805885138002, 'CCD:CHRISTOPHER ROAD (N) O/T NO.5'],
-        [22.5480416072428, 88.3796849634519, 'CCD:MAHENDRA CHATTERJEE LANE (N) O/T'],
-        [22.5388042529991, 88.3747336115453, 'CCD:TILJALA RD O/T NO.2'],
-        [22.5200328693516, 88.3820561150239, 'CSD:NEW BALLYGUNGE (S) P/T'],
-        [22.532804156863, 88.3790625918661, 'CSD:KUSTHIA RD. P/T'],
-        [22.5154941850862, 88.3982367219379, 'CSD:INCOME TAX STAFF QTS. O/T NO-1'],
-        [22.5166576569502, 88.3821833176339, 'CSD:JOHURA BAZAR LN (C) O/T'],
-        [22.5135738915824, 88.384464135795, 'CSD:RAJDANGA (C) P/T'],
-        [22.5337192299852, 88.3879380776168, 'CSD:TOPSIA (E) T/H NO.1'],
-        [22.5343051159666, 88.3840661435975, 'CSD:TOPSIA RD. T/H NO.1'],
-        [22.4983059940067, 88.3963264092403, 'SD:KALIKAPUR (E) O/T'],
-        [22.4827576858023, 88.3898030195679, 'SD:RAJAPUR O/T'],
-        [22.4775567858635, 88.3752884922387, 'SD:GANGULY BAGAN HOUSING O/T NO.3'],
-        [22.4788335759893, 88.4074252415743, 'SD:DHALUA (E) O/T'],
-        [22.4763470625198, 88.400044480891, 'SD:UPHAR T/H NO.1A'],
-        [22.4796087974604,88.342494754438,'SWD:TARAMONI GHAT RD (N) P/T'],
-        [22.4526296964818,88.2805076623594,'SWD:KALAGACHIA INDUSTRIAL HUB (C) O/T'],
-        [22.4692874824731,88.3174614122571,'SWD:BARISHA PURBAPARA O/T'],
-        [22.4782779539184,88.3341932748597,'SWD:PUTIARY KALIPARA (E) P/T'],
-        [22.4763337902173,88.3040911568523,'SWD:KENARAM GANGULY RD O/T'],
-        [22.5068356718549,88.2967168730894,'SWD:BEHALA AERODROME O/T'],
-        [22.4517390368254,88.2815101940599,'SWD:KALAGACHIA HOUSING COMPLEX O/T (DUAL RATIO)'],
-        [22.4881486315311,88.3220329703619,'SWD:RAJA RAMMOHAN ROY ROAD (S) O/T'],
-        [22.4962233849229,88.3173023461034,'SWD:MANDALPARA (N) O/T'],
-        [22.4942262105477,88.3203060232544,'SWD:BHUPEN ROY ROAD (C) O/T NO.2'],
-        [22.5070975480455,88.3063534614282,'SWD:PARNASREE PALLY O/T'],
-        [22.4925916072057,88.3008227364472,'SWD:ADARSHA NAGAR P/T'],
-        [22.4753556146117,88.3129482768958,'SWD:BOSEPARA P/T'],
-        [22.4541384135059,88.3063419068316,'SWD:KEORAPUKUR (S) O/T'],
-        [22.494809710706,88.319164233069,'SWD:BHUPEN ROY RD (W) P/T'],
-        [22.5000947901782,88.3084197798759,'SWD:BRAHMMOSAMAJ RD T/H NO.1'],
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
 
-        ]);
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>CMC MAPPING SYSTEM</title>
 
-        var options = {
-        mapType: 'styledMap',
-        zoomLevel: 7,
-        showTooltip: true,
-        showInfoWindow: true,
-        useMapTypeControl: true,
-        // User will only be able to view/select custom styled maps.
-        mapTypeIds: ['styledMap', 'redEverything', 'imBlue'],
-        maps: {
-          styledMap: {
-            name: 'Styled Map',
-            styles: [
-              {featureType: 'poi.attraction',
-               stylers: [{color: '#fce8b2'}]},
-              {featureType: 'road.highway',
-               stylers: [{hue: '#0277bd'}, {saturation: -50}]},
-              {featureType: 'road.highway', elementType: 'labels.icon',
-               stylers: [{hue: '#000'}, {saturation: 100}, {lightness: 50}]},
-              {featureType: 'landscape',
-               stylers: [{hue: '#259b24'}, {saturation: 10},{lightness: -22}]}
-          ]},
-          redEverything: {
-            name: 'Redden All The Things',
-            styles: [
-              {featureType: 'landscape',
-               stylers: [{color: '#fde0dd'}]},
-              {featureType: 'road.highway',
-               stylers: [{color: '#67000d'}]},
-              {featureType: 'road.highway', elementType: 'labels',
-               stylers: [{visibility: 'off'}]},
-              {featureType: 'poi',
-               stylers: [{hue: '#ff0000'}, {saturation: 50}, {lightness: 0}]},
-              {featureType: 'water',
-               stylers: [{color: '#67000d'}]},
-              {featureType: 'transit.station.airport',
-               stylers: [{color: '#ff0000'}, {saturation: 50}, {lightness: -50}]}
-          ]},
-          imBlue: {
-            name: 'All Your Blues are Belong to Us',
-            styles: [
-              {featureType: 'landscape',
-               stylers: [{color: '#c5cae9'}]},
-              {featureType: 'road.highway',
-               stylers: [{color: '#023858'}]},
-              {featureType: 'road.highway', elementType: 'labels',
-               stylers: [{visibility: 'off'}]},
-              {featureType: 'poi',
-               stylers: [{hue: '#0000ff'}, {saturation: 50}, {lightness: 0}]},
-              {featureType: 'water',
-               stylers: [{color: '#0288d1'}]},
-              {featureType: 'transit.station.airport',
-               stylers: [{color: '#0000ff'}, {saturation: 50}, {lightness: -50}]}
-          ]}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Favicons -->
+<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
-      };
-        
-      var map = new google.visualization.Map(document.getElementById('map_div'));
-      map.draw(data, options);
+      }
 
-    }
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
 
-  </script>
-</head>
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
 
-<body>
-  <div id="map_div" style="width: 90vw; height: 90vh"></div>
-</body>
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
 
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    
+<main>
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+        <span class="fs-4">Jumbotron example</span>
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Custom jumbotron</h1>
+        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+        <button class="btn btn-primary btn-lg" type="button">Example button</button>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-bg-dark rounded-3">
+          <h2>Change the background</h2>
+          <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+          <button class="btn btn-outline-light" type="button">Example button</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+          <h2>Add borders</h2>
+          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+          <button class="btn btn-outline-secondary" type="button">Example button</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-body-secondary border-top">
+      &copy; 2023
+    </footer>
+  </div>
+</main>
+
+    </body>
 </html>
